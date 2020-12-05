@@ -1,20 +1,51 @@
 .Card {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 90px;
+  height: 150px;
   padding: 25px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
+  border-radius: 1rem;
 }
 
 .Card_inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
 .Card_inner > span {
   font-size: 25px;
+  padding-top: 8px;
+}
+
+.Card_inner > span >p {
+  margin: 0;
+}
+
+.text-title{
+  color: #818ea3;
+  font-weight: 700;
+}
+
+.text-primary-p {
+  color: #a5aaad;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.positive{
+  color: #17c671;
+  font-size: .75rem;
+}
+
+.negative{
+  color: #c4183c;
+  font-size: .75rem;
 }

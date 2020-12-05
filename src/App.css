@@ -14,12 +14,6 @@ body {
     "sidebar main main main";
 }
 
-.text-primary-p {
-  color: #a5aaad;
-  font-size: 14px;
-  font-weight: 700;
-}
-
 /*Main*/
 main {
   background: #f3f4f6;
@@ -34,9 +28,16 @@ main {
 /*Cards*/
 .main__cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 30px;
   margin: 20px 0;
+}
+
+.grafic__chart{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
 }
 
 /*Responsive*/
@@ -63,5 +64,9 @@ main {
     grid-template-columns: 1fr;
     gap: 10px;
     margin-bottom: 0;
+  }
+
+  .grafic__chart{
+    flex-direction: column;
   }
 }

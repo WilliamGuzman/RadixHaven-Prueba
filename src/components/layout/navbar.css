@@ -25,11 +25,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .navbar__right > a {
   margin-left: 20px;
   text-decoration: none;
+}
+
+.navbar__right > label {
+  color: #a5aaad;
+  padding: 5px;
+  margin: 0;
 }
 
 .navbar__right > a > img {

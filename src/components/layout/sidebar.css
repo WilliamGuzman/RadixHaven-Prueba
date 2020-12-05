@@ -1,5 +1,5 @@
 .sidebar {
-  background: #020509;
+  background-color: #020509;
   grid-area: sidebar;
   overflow-y: auto;
   padding: 20px;

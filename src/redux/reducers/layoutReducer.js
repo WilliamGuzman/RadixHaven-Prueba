@@ -1,7 +1,8 @@
-import { EVENT_CLICK } from "../types";
+import { EVENT_CLICK, DATA_BOX_SUCCESS } from "../types";
 
 const initialState = {
   click: false,
+  databox: []
 };
 
 export default function (state = initialState, action) {
@@ -11,6 +12,13 @@ export default function (state = initialState, action) {
         return {
             click: action.payload
         }
+    }
+
+    case DATA_BOX_SUCCESS:{
+      return{
+        ...state,
+        databox: action.payload
+      }
     }
 
     default:

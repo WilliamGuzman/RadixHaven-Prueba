@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import hash from 'hash.js';
+import { authUserLogin } from "../../../redux/actions/authAction";
+import { useDispatch } from "react-redux";
 import "./login.css";
 
 const Login = ( props ) => {
 
-  console.log(props)
-
+  const dispatch = useDispatch();
 
   const [datos, guardarDatos] = useState({
-    correo: "",
+    email: "",
     password: "",
   });
 
-  const { correo, password } = datos;
+  const { email, password } = datos;
 
   const [errors, getErrors] = useState({
     email: false,
@@ -27,14 +29,16 @@ const Login = ( props ) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (correo.trim() === "" || password.trim() === "") {
+
+    //VALIDAR CAMPOS VACIOS
+    if (email.trim() === "" || password.trim() === "") {
       getErrors({
         email: true,
         password: true,
       });
       return;
     }
-    if (correo.trim() === "") {
+    if (email.trim() === "") {
       getErrors({
         email: true,
         password: false,
@@ -49,10 +53,21 @@ const Login = ( props ) => {
       return;
     }
 
+    //PASA VALIDACION
     getErrors({
       email: false,
       password: false,
     });
+
+    dispatch( authUserLogin (datos));
+
+    /*const emailHash = hash.sha256().update(email).digest('hex');
+    console.log(emailHash);*/
+    //https://www.gravatar.com/avatar/027b6db2f65c21c203433c24bea49d97b9ac77d1f55d676a0e7833a14c87f8f3
+    //id: cefc38a2-783f-4bc3-80fd-bbef51db6799
+
+    //props.history.push('/inicio');
+
   };
 
   return (
@@ -69,7 +84,7 @@ const Login = ( props ) => {
             <input
               type="email"
               placeholder="Email"
-              name="correo"
+              name="email"
               onChange={ObtenerInformacion}
             />
             <div className="error">

@@ -2,18 +2,22 @@ import React from "react";
 import AnimatedNumber from "animated-number-react";
 import "./card.css";
 
-const Card = () => {
-  const cantidad = 578;
+const Card = ({content, footer,header}) => {
+
+
+  const cantidad = content;
 
   const formatValue = (cantidad) => cantidad.toFixed(0);
 
   return (
       <div className="Card">
-        <i className="fa fa-user-o fa-2x text-lightblue" aria-hidden="true" />
+        <p className="text-primary-p">{header}</p>
         <div className="Card_inner">
-          <p className="text-primary-p">Number of Subscribers</p>
-          <span className="font-bold text-title">
+          <span className="text-title">
             <AnimatedNumber value={cantidad} formatValue={formatValue} />
+          </span>
+          <span>
+            <p className={ footer.isPositive ? "positive" : "negative" }><i className={ footer.isPositive ? "fas fa-caret-up" : "fas fa-caret-down" }></i> {footer.content}</p>
           </span>
         </div>
       </div>

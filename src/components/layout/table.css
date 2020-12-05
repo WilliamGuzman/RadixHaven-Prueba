@@ -1,0 +1,12 @@
+.container__table{
+    height: 10px;
+    text-align: center;
+}
+
+.container__table > h2{
+    padding: 5px;
+}
+
+table > tbody > tr:hover{
+    cursor: pointer;
+}
