@@ -1,10 +1,10 @@
 import React from "react";
 import "./spinner.css";
 
-const Spinner = () => {
+const Spinner = ({title}) => {
   return (
     <div className="spinner__container">
-      <p>Cargando usuarios</p>
+      <p>{title}</p>
       <div className="sk-chase">
         <div className="sk-chase-dot" />
         <div className="sk-chase-dot" />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { Link, useHistory } from "react-router-dom";
 import "./navbar.css";
 
 import { eventClick } from "../../redux/actions/layoutAction";
@@ -8,25 +9,40 @@ import { logOutAction } from "../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const Nabvar = () => {
-    
+  const history = useHistory();
   const dispatch = useDispatch();
   const clickAction = useSelector((state) => state.layout.click);
   const emailhash = useSelector((state) => state.layout.hashemail);
 
   const [click, setClick] = useState(false);
 
-  const  handleClick = () => {
+  const handleClick = () => {
     setClick(!click);
-    dispatch( eventClick(!click) );
+    dispatch(eventClick(!click));
   };
-  
+
   const logOut = () => {
-    dispatch( logOutAction() );
-  }
+    Swal.fire({
+      title: 'Desea salir de la Aplicación?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, salir!',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch( logOutAction() )
+        history.push('/')
+      }
+    })
+  };
 
   useEffect(() => {
-    dispatch( getUserFavico() )
-  },[])
+    dispatch(getUserFavico());
+
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <nav className="navbar">
@@ -36,10 +52,20 @@ const Nabvar = () => {
 
       <div className="navbar__right">
         <a href="!#">
-          <img className="img__avatar" src={ emailhash !== '' ? `https://www.gravatar.com/avatar/${emailhash}` : "/images/avatar.svg"}  alt="avatar" />
+          <img
+            className="img__avatar"
+            src={
+              emailhash !== ""
+                ? `https://www.gravatar.com/avatar/${emailhash}`
+                : "/images/avatar.svg"
+            }
+            alt="avatar"
+          />
         </a>
         <label>USUARIO</label>
-        <Link to="/" onClick={logOut}><i class="fas fa-sign-out-alt"></i></Link>
+        <a onClick={logOut} className="salir">
+          <i className="fas fa-sign-out-alt"></i>
+        </a>
       </div>
     </nav>
   );

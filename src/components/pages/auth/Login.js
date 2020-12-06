@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import hash from 'hash.js';
+import hash from "hash.js";
 import { authUserLogin } from "../../../redux/actions/authAction";
 import { useDispatch } from "react-redux";
 import "./login.css";
 
-const Login = ( props ) => {
-
+const Login = (props) => {
   const dispatch = useDispatch();
 
   const [datos, guardarDatos] = useState({
@@ -59,7 +58,7 @@ const Login = ( props ) => {
       password: false,
     });
 
-    dispatch( authUserLogin (datos));
+    dispatch(authUserLogin(datos));
 
     /*const emailHash = hash.sha256().update(email).digest('hex');
     console.log(emailHash);*/
@@ -67,7 +66,6 @@ const Login = ( props ) => {
     //id: cefc38a2-783f-4bc3-80fd-bbef51db6799
 
     //props.history.push('/inicio');
-
   };
 
   return (
@@ -87,14 +85,12 @@ const Login = ( props ) => {
               name="email"
               onChange={ObtenerInformacion}
             />
-            <div className="error">
-              {errors.email ? (
-                <>
-                  <p>Campo requerido</p>
-                  <i className="fas fa-exclamation-circle"></i>
-                </>
-              ) : null}
-            </div>
+            {errors.email ? (
+              <div className="error">
+                <p>Campo requerido</p>
+                <i className="fas fa-exclamation-circle"></i>
+              </div>
+            ) : null}
           </div>
 
           <div className="form-group">

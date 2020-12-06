@@ -13,3 +13,4 @@ export const GET_USER = "GET_USER";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_ERROR = "GET_USER_ERROR";
 export const SET_IMAGE_USER = "SET_IMAGE_USER";
+export const GET_DATA_USER = "GET_DATA_USER";

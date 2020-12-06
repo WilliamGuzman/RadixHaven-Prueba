@@ -33,6 +33,11 @@
   text-decoration: none;
 }
 
+.salir:hover > i{
+  cursor: pointer;
+  color: red !important;
+}
+
 .navbar__right > label {
   color: #a5aaad;
   padding: 5px;

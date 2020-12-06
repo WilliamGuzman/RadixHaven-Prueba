@@ -7,11 +7,11 @@ body {
 .contenedor {
   display: grid;
   height: 100vh;
-  grid-template-columns: 0.8fr 1fr 1fr 1fr;
+  grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 3fr;
   grid-template-areas:
-    "sidebar nav nav nav"
-    "sidebar main main main";
+    "sidebar nav nav nav nav"
+    "sidebar main main main main";
 }
 
 /*Main*/
@@ -33,11 +33,28 @@ main {
   margin: 20px 0;
 }
 
-.grafic__chart{
-  width: 100%;
-  display: flex;
-  align-items: center;
+/*Graphics*/
+.grafic__chart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   padding-top: 20px;
+}
+
+/*Table*/
+.container__table {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.container__table > h2 {
+  padding: 5px;
+}
+
+table > tbody > tr:hover {
+  cursor: pointer;
 }
 
 /*Responsive*/
@@ -57,6 +74,10 @@ main {
   .nav_icon {
     display: inline;
   }
+
+  .input__text {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 855px) {
@@ -66,7 +87,19 @@ main {
     margin-bottom: 0;
   }
 
-  .grafic__chart{
-    flex-direction: column;
+  .grafic__chart {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .container__table {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .input__text{
+    width: 100%;
   }
 }
