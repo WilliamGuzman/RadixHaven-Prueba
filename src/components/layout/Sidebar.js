@@ -14,7 +14,7 @@ const Sidebar = () => {
         <img src="/images/cropped-logoRadix.png" alt="logo" />
       </div>
       <div className="sidebar__menu">
-        <div className="sidebar__link active_menu_link">
+        <div className="sidebar__link">
           <i className="fa fa-home" />
           <Link to="/inicio">Inicio</Link>
         </div>

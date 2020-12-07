@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import hash from "hash.js";
+import { useHistory } from 'react-router-dom';
 import { authUserLogin } from "../../../redux/actions/authAction";
 import { useDispatch } from "react-redux";
 import "./login.css";
 
-const Login = (props) => {
+const Login = () => {
+
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const [datos, guardarDatos] = useState({
@@ -60,12 +63,9 @@ const Login = (props) => {
 
     dispatch(authUserLogin(datos));
 
-    /*const emailHash = hash.sha256().update(email).digest('hex');
-    console.log(emailHash);*/
-    //https://www.gravatar.com/avatar/027b6db2f65c21c203433c24bea49d97b9ac77d1f55d676a0e7833a14c87f8f3
-    //id: cefc38a2-783f-4bc3-80fd-bbef51db6799
-
-    //props.history.push('/inicio');
+    setTimeout(() => {
+      history.push('/inicio');
+    }, 1000);
   };
 
   return (

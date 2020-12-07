@@ -15,7 +15,7 @@ const initialState = {
   msg: "Error al cargar los usuarios",
 };
 
-export default function( state = initialState, action ){
+export default function user( state = initialState, action ){
   switch (action.type) {
     case GET_USER: {
       return {

@@ -2,11 +2,13 @@ import React from "react";
 import AnimatedNumber from "animated-number-react";
 import "./card.css";
 
-const Card = ({ content, footer, header }) => {
+const Card = ({ content, footer, header, image }) => {
+  
 
   const cantidad = content;
 
   const formatValue = (cantidad) => cantidad.toFixed(0);
+
 
   return (
     <div className="Card">
@@ -25,8 +27,8 @@ const Card = ({ content, footer, header }) => {
             {footer.content}
           </p>
         </span>
+        <img  src={`/images/${image}`}  alt="wave"/>
       </div>
-
     </div>
   );
 };

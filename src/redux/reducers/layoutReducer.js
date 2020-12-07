@@ -1,12 +1,13 @@
-import { EVENT_CLICK, DATA_BOX_SUCCESS, DATA_BOX } from "../types";
+import { EVENT_CLICK, DATA_BOX_SUCCESS, DATA_BOX, USER_INFO } from "../types";
 
 const initialState = {
   click: false,
   loading: true,
-  databox: []
+  databox: [],
+  userData: []
 };
 
-export default function( state = initialState, action ){
+export default function layout( state = initialState, action ){
   switch (action.type) {
 
     case EVENT_CLICK:{
@@ -28,6 +29,13 @@ export default function( state = initialState, action ){
         ...state,
         databox: action.payload,
         loading: false
+      }
+    }
+
+    case USER_INFO:{
+      return{
+        ...state,
+        userData: action.payload
       }
     }
 

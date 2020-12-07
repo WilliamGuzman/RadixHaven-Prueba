@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Alert, Modal, Pagination } from "react-bootstrap";
 import Spinner from "../layout/Spinner";
-import DataTable from "react-data-table-component";
-import ReactPaginate from "react-paginate";
 import "./table.css";
 
 //Redux
@@ -12,35 +10,6 @@ import {
 } from "../../redux/actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 
-const columnas = [
-  {
-    name: "Name",
-    selector: "first_name",
-    sortable: true,
-  },
-  {
-    name: "Email",
-    selector: "email",
-    sortable: true,
-  },
-  {
-    name: "Phone",
-    selector: "phone",
-    sortable: false,
-  },
-  {
-    name: "Status",
-    selector: "status",
-    sortable: false,
-  },
-];
-
-const paginacionOpciones = {
-  rowsPerPageText: "Filas por Página",
-  rangeSeparatorText: "de",
-  selectAllRowsItem: true,
-  selectAllRowsItemText: "Todos",
-};
 
 const TableComponent = () => {
   const dispatch = useDispatch();
@@ -215,6 +184,7 @@ const TableComponent = () => {
           <Spinner title={"Cargando lista de usuarios"} />
         ) : (
           <div>
+            <p>Dar click en la fila del usuario para obtener mas informacón </p>
             <Table responsive="sm" hover>
               <thead className="thead-dark">
                 <tr>

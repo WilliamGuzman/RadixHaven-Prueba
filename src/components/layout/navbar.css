@@ -46,6 +46,7 @@
 
 .navbar__right > a > img {
     width: 40px;
+    border-radius: 50%;
   }
 
 .navbar__right > a > i {

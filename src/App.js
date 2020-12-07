@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import jwdecode from 'jwt-decode';
+import GuardRoute from "./components/guardRoutes";
+//import jwdecode from "jwt-decode";
 import routes from "./router";
 import "./App.css";
 
@@ -13,8 +14,6 @@ import tokenAuth from "./config/token";
 const token = localStorage.getItem("token");
 if (token) {
   tokenAuth(token);
-  const jwt = jwdecode(token);
-  console.log(jwt);
 }
 
 function App() {
@@ -22,15 +21,28 @@ function App() {
     <Router>
       <Provider store={store}>
         <Switch>
-          {routes.map((route) => (
-            <Route
-              key={route.url}
-              exact
-              type={route.type}
-              path={route.url}
-              component={route.component}
-            />
-          ))}
+          {routes.map(function (route) {
+            if (route.type === "public") {
+              return (
+                <Route
+                  key={route.url}
+                  exact
+                  type={route.type}
+                  path={route.url}
+                  component={route.component}
+                />
+              );
+            } else {
+              return (
+                <GuardRoute
+                  key={route.url}
+                  exact
+                  path={route.url}
+                  component={route.component}
+                />
+              );
+            }
+          })}
         </Switch>
       </Provider>
     </Router>

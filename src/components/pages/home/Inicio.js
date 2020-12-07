@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Navbar from "../../layout/Navbar";
 import Sidebar from "../../layout/Sidebar";
-import  Spinner  from "../../layout/Spinner";
+import Spinner  from "../../layout/Spinner";
 import Card from "../../layout/Card";
 import LineChart from "../../layout/LineChart";
 import PieChart from "../../layout/PieChart";
-import { getDataBox } from "../../../redux/actions/layoutAction";
+import { getDataBox, userAuthenticateData } from "../../../redux/actions/layoutAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const Inicio = () => {
@@ -13,10 +13,10 @@ const Inicio = () => {
 
   const dataBox = useSelector((state) => state.layout.databox);
   const loading = useSelector((state) => state.layout.loading);
-  console.log(dataBox);
+  
   useEffect(() => {
     dispatch(getDataBox());
-
+    dispatch(userAuthenticateData());
     // eslint-disable-next-line
   }, []);
 
@@ -38,6 +38,7 @@ const Inicio = () => {
                   content={dataBox[0].content}
                   footer={dataBox[0].footer}
                   header={dataBox[0].header}
+                  image={'wave_revenue.svg'}
                 />
 
                 <Card
@@ -45,6 +46,7 @@ const Inicio = () => {
                   content={dataBox[1].content}
                   footer={dataBox[1].footer}
                   header={dataBox[1].header}
+                  image={'wave_per_product.svg'}
                 />
 
                 <Card
@@ -52,6 +54,7 @@ const Inicio = () => {
                   content={dataBox[2].content}
                   footer={dataBox[2].footer}
                   header={dataBox[2].header}
+                  image={'wave_revenue_per_product.svg'}
                 />
 
                 <Card
@@ -59,6 +62,7 @@ const Inicio = () => {
                   content={dataBox[3].content}
                   footer={dataBox[3].footer}
                   header={dataBox[3].header}
+                  image={'wave_product_solid.svg'}
                 />
 
                 <Card
@@ -66,6 +70,7 @@ const Inicio = () => {
                   content={dataBox[4].content}
                   footer={dataBox[4].footer}
                   header={dataBox[4].header}
+                  image={'wave_per_day.svg'}
                 />
               </>
             )}

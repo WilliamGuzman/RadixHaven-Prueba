@@ -5,6 +5,8 @@ import { Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { validateUserAction } from "../../redux/actions/authAction";
 
+
+
 const Rutas = ({component:Component, ...props }) => {
   const dispatch = useDispatch();
   const authenticated = useSelector((state) => state.auth.authenticated);

@@ -1,12 +1,12 @@
-import { LOGIN_SUCCESS, LOG_OUT } from "../types";
+import { LOGIN_SUCCESS, LOG_OUT, VALIDATE_TOKEN_SUCCESS,VALIDATE_TOKEN_ERROR, LOGIN_ERROR } from "../types";
 const initialState = {
   error: false,
   msg: "",
-  authenticated: false,
-  loading: true,
+  authenticated: null,
+  loading: null,
 };
 
-export default function( state = initialState, action ){
+export default function auth( state = initialState, action ){
   switch (action.type) {
     
     case LOGIN_SUCCESS: {
@@ -18,13 +18,22 @@ export default function( state = initialState, action ){
         loading: false,
       };
     }
-
+    case VALIDATE_TOKEN_ERROR:
+    case LOGIN_ERROR:
     case LOG_OUT:{
       localStorage.removeItem('token');
       return{
         ...state,
         authenticated: false,
         loading: true,
+      }
+    }
+
+    case VALIDATE_TOKEN_SUCCESS:{
+      return{
+        ...state,
+        authenticated: true,
+        loading: false
       }
     }
 
